@@ -1,7 +1,7 @@
-node_modules
+node_modules/
 
-reports
+reports/
 
-artifacts
+artifacts/
 
-allure-reports
+allure-reports/
