@@ -5,3 +5,5 @@ reports/
 artifacts/
 
 allure-report/
+
+.DS_Store
