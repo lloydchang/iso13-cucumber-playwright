@@ -14,32 +14,29 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "engines": {
-    "node": "20.10.0"
+    "node": "22.10.0"
   },
   "dependencies": {
     "@cucumber/cucumber": "11.0.1",
     "@cucumber/html-formatter": "21.7.0",
-    "@cucumber/messages": "26.0.1",
+    "@cucumber/messages": "27.0.0",
     "@cucumber/pretty-formatter": "1.0.1",
-    "@playwright/test": "1.48.1",
+    "@playwright/test": "1.48.2",
     "@tensorflow/tfjs": "4.22.0",
     "@tensorflow/tfjs-node": "4.22.0",
     "cucumber-console-formatter": "1.0.0",
     "cucumber-html-formatter": "3.1.0",
     "cucumber-pretty": "6.0.1",
-    "playwright": "1.48.1"
+    "playwright": "1.48.2"
   },
   "devDependencies": {
-    "@faker-js/faker": "9.0.3",
+    "@faker-js/faker": "9.1.0",
     "@types/fs-extra": "11.0.4",
     "@types/lodash": "4.17.12",
-    "@types/node": "22.7.7",
+    "@types/node": "22.8.1",
     "@types/prettier": "3.0.0",
-    "@typescript-eslint/eslint-plugin": "8.10.0",
-    "@typescript-eslint/parser": "8.10.0",
-    "allure-commandline": "2.30.0",
-    "allure-cucumberjs": "^3.0.5",
-    "allure-playwright": "^3.0.5",
+    "@typescript-eslint/eslint-plugin": "8.11.0",
+    "@typescript-eslint/parser": "8.11.0",
     "as-a": "2.2.7",
     "axe-html-reporter": "2.2.11",
     "axe-playwright": "2.0.3",
