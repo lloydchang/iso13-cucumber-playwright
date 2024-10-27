@@ -13,9 +13,8 @@ const config = {
     strict: true, // Ensure that all steps used in feature files are defined
     format: [
         'progress', // Shows test execution progress in the console
-        'json:reports/cucumber-report.json', // Generates a JSON report of the test results
-        //'html:reports/report.html', //Generates an HTML report of the test results
-        'allure-playwright', // Add Allure reporter for enhanced reporting
+        'json:reports/cucumber_report.json', // Generates a JSON report of the test results
+        'html:reports/report.html', //Generates an HTML report of the test results
     ],
     formatOptions: { snippetInterface: 'async-await' }, // Use async/await for step definitions
     worldParameters: {}, // Optional parameters to share across steps
