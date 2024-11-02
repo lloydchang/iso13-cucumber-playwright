@@ -7,7 +7,7 @@ const config = {
     paths: [process.env.FEATURE_PATH || 'src/features/**/*.feature'], // Use environment variable for flexibility
     requireModule: ['ts-node/register'], // Enables TypeScript support for test files
     require: [
-        process.env.STEP_PATH || 'src/steps/**/*.step.ts', // Use environment variable for path
+        process.env.STEP_PATH || 'src/steps/**/*.steps.ts', // Use environment variable for path
         'src/support/*.ts', // Load support files
     ],
     strict: true, // Ensure that all steps used in feature files are defined

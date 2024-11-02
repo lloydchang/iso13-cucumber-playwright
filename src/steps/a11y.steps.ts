@@ -17,8 +17,8 @@ async function checka11y(page: Page): Promise<AxeResults> {
     });
 }
 
-Given('I navigate to Tesla', async function () {
-    await fixture.page.goto('http://www.tesla.com/')
+Given('I got to a site that is accessible', async function () {
+    await fixture.page.goto('https://www.a11yproject.com/');
 });
 
 When('I run the a11y check', async function () {

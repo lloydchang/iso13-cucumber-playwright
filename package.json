@@ -7,7 +7,7 @@
   "description": "Cucumber Playwright Automation Framework",
   "scripts": {
     "prepReport": "rimraf reports traces && mkdir reports",
-    "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-definitions/**/*.ts'",
+    "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
     "build": "npx tsc",
     "gherkin-lint": "gherkin-lint -c .gherkin-lnt.yml",
     "exlint": "npx eslint",
@@ -24,9 +24,11 @@
     "@playwright/test": "1.48.2",
     "@tensorflow/tfjs": "4.22.0",
     "@tensorflow/tfjs-node": "4.22.0",
+    "@types/k6": "^0.54.1",
     "cucumber-console-formatter": "1.0.0",
     "cucumber-html-formatter": "3.1.0",
     "cucumber-pretty": "6.0.1",
+    "k6": "^0.46.0",
     "playwright": "1.48.2"
   },
   "devDependencies": {

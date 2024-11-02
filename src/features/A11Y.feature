@@ -1,7 +1,12 @@
-@A11y
-Feature: A11y
+@a11y
+Feature: Validate Accessibility
+    As a a11y team
+    We want to ensure that the website is accessible to all users
+    So we can provide a better user experience for everyone
+
+    #a11y - Accessibility
 
     Scenario: Validate A11y
-        Given I navigate to Tesla
+        Given I got to a site that is accessible
         When I run the a11y check
         Then I should not see violations
