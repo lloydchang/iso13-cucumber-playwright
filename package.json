@@ -9,8 +9,6 @@
     "prepReport": "rimraf reports traces && mkdir reports",
     "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
     "build": "npx tsc",
-    "gherkin-lint": "gherkin-lint -c .gherkin-lnt.yml",
-    "exlint": "npx eslint",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "engines": {

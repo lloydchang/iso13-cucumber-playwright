@@ -42,7 +42,13 @@ This project uses Cucumber and Playwright for end-to-end testing.
    npx playwright install
    ```
 
-## Running Tests
+4. **Setup reports:**
+
+   ```sh
+   npm run prepReport
+   ```
+
+## Running Features
 
 1. **Run all tests:**
 
@@ -56,10 +62,10 @@ This project uses Cucumber and Playwright for end-to-end testing.
    npm run cucumber -- --tags "@tagName"
    ```
 
-3. **Run tests in a specific browser (e.g., Chrome):**
+3. **Run all features except features and or scenarios with @wip tag, work in progress:**
 
    ```sh
-   npx playwright test --project=chromium
+   npm run cucumber -- --tags "not @wip"
    ```
 
 ## Project Structure
@@ -74,6 +80,7 @@ This project uses Cucumber and Playwright for end-to-end testing.
 1. **Create a feature file in the `features/` directory:**
 
    ```gherkin
+   @exampleFeature
    Feature: Example feature
 
      Scenario: Example scenario
@@ -96,21 +103,6 @@ This project uses Cucumber and Playwright for end-to-end testing.
      expect(pageTitle).toBe(title);
    });
    ```
-
-## Examples
-
-- **Run tests by tags:**
-  
-  ```sh
-  npm run cucumber -- --tags "@tagName"
-  ```
-
-- **./reports/report.html**
-  
-  ```sh
-  npm run cucumber:report
-  ```
-
 ## Troubleshooting
 
 - **Error: `npx playwright install` fails.**  

@@ -1,39 +1,64 @@
-import { Given, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
-import { sendPostRequest, sendGetRequest } from '../support/api/apiHelper';
+// Import necessary functions and types from Cucumber, Playwright, and custom API helper
+import { Given, Then } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+import { sendPostRequest, sendGetRequest } from "../support/api/apiHelper";
 
-let response: any;
+let response: any; // Variable to store the response from API requests
 
-Given('I send a POST request to {string} with the following data', async function (endpoint: string, dataTable) {
-  const data = dataTable.rowsHash();
+// Step definition for sending a POST request
+Given(
+  "I send a POST request to {string} with the following data",
+  async function (endpoint: string, dataTable) {
+    // Convert data table from feature file to a key-value object
+    const data = dataTable.rowsHash();
 
+    try {
+      // Send POST request to the given endpoint with provided data
+      response = await sendPostRequest(endpoint, data);
+    } catch (error) {
+      // If the request fails, throw an error with details
+      throw new Error(`Failed to send POST request to ${endpoint}: ${error}`);
+    }
+  },
+);
+
+// Step definition for sending a GET request
+Given("I send a GET request to {string}", async function (endpoint: string) {
   try {
-    response = await sendPostRequest(endpoint, data);
-  } catch (error) {
-    throw new Error(`Failed to send POST request to ${endpoint}: ${error}`);
-  }
-});
-
-Given('I send a GET request to {string}', async function (endpoint: string) {
-  try {
+    // Send GET request to the specified endpoint and store response
     response = await sendGetRequest(endpoint);
   } catch (error) {
+    // Throw an error if the GET request fails
     throw new Error(`Failed to send GET request to ${endpoint}: ${error}`);
   }
 });
 
-Then('the response should contain {string} with value {string}', function (key: string, value: string) {
-  // Adjust for the nested structure
-  const expectedValue = isNaN(Number(value)) ? value : Number(value);
+// Step definition for checking the response contains a key with a specific value
+Then(
+  "the response should contain {string} with value {string}",
+  function (key: string, value: string) {
+    // Convert the value to a number if it’s numeric, otherwise keep as a string
+    const expectedValue = isNaN(Number(value)) ? value : Number(value);
 
-  // Check if the response has a `data` property and look inside it if necessary
-  const actualValue = response.data && response.data[key] ? response.data[key] : response[key];
-  expect(actualValue).toEqual(expectedValue);
-});
+    // Access the actual value, checking for a nested `data` structure in the response
+    const actualValue =
+      response.data && response.data[key] ? response.data[key] : response[key];
+    
+    // Assert that the actual value matches the expected value
+    expect(actualValue).toEqual(expectedValue);
+  },
+);
 
-Then('the response should contain {string} with a non-empty value', function (key: string) {
-  // Check for nested structure and get the value accordingly
-  const actualValue = response.data && response.data[key] ? response.data[key] : response[key];
-  expect(actualValue).toBeDefined();
-  expect(actualValue).not.toBe('');
-});
+// Step definition for verifying the response contains a key with a non-empty value
+Then(
+  "the response should contain {string} with a non-empty value",
+  function (key: string) {
+    // Retrieve the actual value, handling potential nested `data` structure
+    const actualValue =
+      response.data && response.data[key] ? response.data[key] : response[key];
+    
+    // Check that the actual value is defined and not an empty string
+    expect(actualValue).toBeDefined();
+    expect(actualValue).not.toBe("");
+  },
+);

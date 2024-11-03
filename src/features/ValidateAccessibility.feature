@@ -5,8 +5,9 @@ Feature: Validate Accessibility
     So we can provide a better user experience for everyone
 
     #a11y - Accessibility
+    #a11y reports are generated in /artifacts/acceessibilityReport.html
 
     Scenario: Validate A11y
-        Given I got to a site that is accessible
+        Given I go to a site that is accessible
         When I run the a11y check
         Then I should not see violations
