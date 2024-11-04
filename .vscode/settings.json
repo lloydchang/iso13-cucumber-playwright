@@ -6,7 +6,6 @@
     "cucumberautocomplete.syncfeatures": "src/features/**/*.feature", // Path to feature files
     "cucumberautocomplete.strictGherkinCompletion": true,
     "cucumberautocomplete.smartSnippets": true,
-    "cucumberautocomplete.skipDocStringsFormat": true,
-    "playwright.testConfig": "playwright.config.ts" // Playwright config path
+    "cucumberautocomplete.skipDocStringsFormat": true
   }
   
