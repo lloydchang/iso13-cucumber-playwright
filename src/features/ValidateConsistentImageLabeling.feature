@@ -11,10 +11,9 @@ Feature: Validate Consistent Image Labeling
 
   @wip
   Scenario: Validate labeling consistency under different lighting conditions
-   
+
   @wip
   Scenario: Validate consistent labeling for different angles of images
-    
+
   @wip
   Scenario: Validate labeling consistency in noisy images
-    

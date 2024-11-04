@@ -6,6 +6,7 @@
   "license": "ISC",
   "description": "Cucumber Playwright Automation Framework",
   "scripts": {
+    "gherkin-lint": "npx gherkin-lint",
     "lint": "eslint 'src/**/*.ts'",
     "prepReport": "rimraf reports traces && mkdir reports",
     "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
