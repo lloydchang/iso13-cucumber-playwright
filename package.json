@@ -9,7 +9,8 @@
     "prepReport": "rimraf reports traces && mkdir reports",
     "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
     "build": "npx tsc",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "codegen": "playwright codegen"
   },
   "engines": {
     "node": "22.10.0"

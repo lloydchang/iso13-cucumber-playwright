@@ -1,51 +1,44 @@
-// Import Cucumber hooks and utilities for managing test setup and teardown
-import {
-    After,
-    AfterAll,
-    Before,
-    BeforeAll,
-    setDefaultTimeout,
-    Status,
-  } from "@cucumber/cucumber";
-  import { chromium, Browser, BrowserContext, Page } from "playwright";
-  import { fixture } from "./pageFixture";
-  import { CustomWorld } from "./world";
-  
-  let browser: Browser; // Variable to store the browser instance
-  let context: BrowserContext; // Variable to store the browser context
-  
-  // Set the default timeout for steps to 10 seconds
-  setDefaultTimeout(10 * 1000);
-  
-  // BeforeAll hook: Launch the browser before any tests run
-  BeforeAll(async function () {
-    browser = await chromium.launch({ headless: false }); // Launch Chromium browser in non-headless mode
-  });
-  
-  // Before hook: Set up a new browser context and page before each scenario
-  Before(async function (this: CustomWorld) {
-    context = await browser.newContext(); // Create a new browser context (isolates cookies, storage, etc.)
-    const page: Page = await context.newPage(); // Open a new page within the context
-    fixture.page = page; // Assign the page to the fixture for global access
-    this.page = page; // Assign the page to the Cucumber world for scenario-specific access
-  });
-  
-  // After hook: Take a screenshot if a scenario fails
-  After(async function ({ pickle, result }) {
-    if (result?.status == Status.FAILED) {
-      // Take a screenshot of the failed page and save it with the scenario name
+// hooks.ts
+import { After, AfterAll, Before, BeforeAll, setDefaultTimeout, Status } from "@cucumber/cucumber";
+import { fixture } from "./pageFixture";
+import { CustomWorld } from "./world";
+
+setDefaultTimeout(10 * 1000); // Set the default timeout for steps to 10 seconds
+
+// BeforeAll hook: Launch the browser once before any tests run
+BeforeAll(async function () {
+  await fixture.initialize(); // Initialize browser only once before all tests
+});
+
+// Before hook: Set up a new context and page for each scenario to ensure test isolation
+Before(async function (this: CustomWorld) {
+  await fixture.initialize(); // Re-use existing browser, create a new context and page
+  this.page = fixture.page; // Assign the page to the Cucumber world for scenario-specific access
+});
+
+// After hook: Take a screenshot if a scenario fails, then close the context to ensure isolation
+After(async function ({ pickle, result }) {
+  if (result?.status === Status.FAILED && fixture.page) {
+    try {
       const img = await fixture.page.screenshot({
         path: `./reports/screenshots/${pickle.name}.png`,
         type: "png",
       });
       this.attach(img, "image/png"); // Attach the screenshot to the Cucumber report
+    } catch (error) {
+      console.error("Error taking screenshot:", error);
     }
-  });
-  
-  // AfterAll hook: Close the browser after all tests have completed
-  AfterAll(async function () {
-    if (browser) {
-      await browser.close(); // Close the browser instance to free resources
-    }
-  });
-  
+  }
+
+  // Close the context and reset page after each scenario to avoid test interference
+  if (fixture.context) {
+    await fixture.context.close(); // Close the context to release resources
+    fixture.context = undefined; // Reset context to ensure a new one for the next scenario
+    fixture.page = undefined; // Reset page reference to ensure a fresh page is used
+  }
+});
+
+// AfterAll hook: Close the browser after all tests have completed to clean up resources
+AfterAll(async function () {
+  await fixture.close(); // Final cleanup to ensure no open browsers remain
+});
