@@ -1,7 +1,7 @@
 // hooks.ts
-import { After, AfterAll, Before, BeforeAll, setDefaultTimeout, Status } from "@cucumber/cucumber";
-import { fixture } from "./pageFixture";
-import { CustomWorld } from "./world";
+import { After, AfterAll, Before, BeforeAll, setDefaultTimeout, Status } from '@cucumber/cucumber';
+import { fixture } from './pageFixture';
+import { CustomWorld } from './world';
 
 setDefaultTimeout(10 * 1000); // Set the default timeout for steps to 10 seconds
 
@@ -22,11 +22,11 @@ After(async function ({ pickle, result }) {
     try {
       const img = await fixture.page.screenshot({
         path: `./reports/screenshots/${pickle.name}.png`,
-        type: "png",
+        type: 'png',
       });
-      this.attach(img, "image/png"); // Attach the screenshot to the Cucumber report
+      this.attach(img, 'image/png'); // Attach the screenshot to the Cucumber report
     } catch (error) {
-      console.error("Error taking screenshot:", error);
+      console.error('Error taking screenshot:', error);
     }
   }
 
