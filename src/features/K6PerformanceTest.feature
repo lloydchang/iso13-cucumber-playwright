@@ -1,5 +1,5 @@
-@k6PerformanceTesting
-Feature: k6 Performance Testing
+@K6PerformanceTesting
+Feature: K6 Performance Test
   As an Engineer
   I want to be able to load test API endpoints
   So I can validate the performance
