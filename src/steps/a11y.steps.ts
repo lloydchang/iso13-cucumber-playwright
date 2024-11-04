@@ -22,17 +22,17 @@ async function checka11y(page: Page): Promise<AxeResults> {
 
 // Given step: Navigate to a specific accessible website
 Given("I go to a site that is accessible", async function () {
-  await fixture.page.goto("https://www.a11yproject.com/");  // Go to the accessibility project site
+  await this.page.goto("https://www.a11yproject.com/");  // Go to the accessibility project site
 });
 
 // When step: Inject Axe and prepare for accessibility checks
 When("I run the a11y check", async function () {
-  await injectAxe(fixture.page);  // Inject the Axe script for a11y checks
+  await injectAxe(this.page);  // Inject the Axe script for a11y checks
 });
 
 // Then step: Run accessibility check and handle/report violations
 Then("I should not see violations", async function () {
-  const results: AxeResults = await checka11y(fixture.page);  // Run the accessibility check and get results
+  const results: AxeResults = await checka11y(this.page);  // Run the accessibility check and get results
 
   // Generate an HTML report for the accessibility results
   const reportHtml = createHtmlReport({

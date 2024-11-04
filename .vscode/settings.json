@@ -1,0 +1,12 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "cucumberautocomplete.steps": [
+      "src/steps/**/*.ts" // Path to step definitions
+    ],
+    "cucumberautocomplete.syncfeatures": "src/features/**/*.feature", // Path to feature files
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.smartSnippets": true,
+    "cucumberautocomplete.skipDocStringsFormat": true,
+    "playwright.testConfig": "playwright.config.ts" // Playwright config path
+  }
+  

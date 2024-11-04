@@ -2,24 +2,22 @@
 
 import isCI from "is-ci"; // Import the is-ci module to check if the code is running in a CI environment
 
-// Cucumber configuration
 const config = {
-    paths: [process.env.FEATURE_PATH || 'src/features/**/*.feature'], // Use environment variable for flexibility
-    requireModule: ['ts-node/register'], // Enables TypeScript support for test files
+    paths: [process.env.FEATURE_PATH || 'src/features/**/*.feature'],
+    requireModule: ['ts-node/register'], // Enables TypeScript support
     require: [
-        process.env.STEP_PATH || 'src/steps/**/*.steps.ts', // Use environment variable for path
-        'src/support/*.ts', // Load support files
+        process.env.STEP_PATH || 'src/steps/**/*.steps.ts',
+        'src/support/*.ts',
     ],
-    strict: true, // Ensure that all steps used in feature files are defined
+    strict: true,
     format: [
-        'progress', // Shows test execution progress in the console
-        'json:reports/cucumber_report.json', // Generates a JSON report of the test results
-        'html:reports/report.html', //Generates an HTML report of the test results
+        'progress',
+        'json:reports/cucumber_report.json',
+        'html:reports/report.html',
     ],
-    formatOptions: { snippetInterface: 'async-await' }, // Use async/await for step definitions
-    worldParameters: {}, // Optional parameters to share across steps
-    retry: isCI ? 1 : 0, // Retry failed tests once if running in a CI environment
+    formatOptions: { snippetInterface: 'async-await' },
+    worldParameters: {},
+    retry: isCI ? 1 : 0,
 };
 
-// Export the configuration object as the default export
 export default config;
