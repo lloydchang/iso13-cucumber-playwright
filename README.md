@@ -57,9 +57,17 @@ It hits 5 major Features:
    npm run prepReport
    ```
 
+5. **Install k6 Globally: Install k6 globally on your system to use it as a CLI:**
+
+   ```sh
+   brew install k6  # macOS
+   sudo apt install k6  # Ubuntu Linux
+   choco install k6  # Windows, using Chocolatey
+   ```
+
 ## Running Features
 
-1. **Run all features except features and or scenarios with @wip tag, work in progress:**
+1. **Run all features except features and or scenarios with @wip tag, work in progress:** (If this passes, you are all set)
 
    ```sh
    npm run cucumber -- --tags "not @wip"
