@@ -4,6 +4,15 @@
 
 This project uses Cucumber and Playwright for end-to-end testing.
 
+It hits 5 major Features:
+- Accessibility Testing with AXE
+- API Testing
+- Machine Learning
+   - Using Tensor Flow
+   - Image Classification
+- Perfomance Testing with [https://k6.io/](https://k6.io/)
+- UI Tesitng
+
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
@@ -50,22 +59,22 @@ This project uses Cucumber and Playwright for end-to-end testing.
 
 ## Running Features
 
-1. **Run all tests:**
+1. **Run all features except features and or scenarios with @wip tag, work in progress:**
+
+   ```sh
+   npm run cucumber -- --tags "not @wip"
+   ```
+
+2. **Run all tests:**
 
    ```sh
    npm run cucumber
    ```
 
-2. **Run a specific feature by tag:**
+3. **Run a specific feature by tag:**
 
    ```sh
    npm run cucumber -- --tags "@tagName"
-   ```
-
-3. **Run all features except features and or scenarios with @wip tag, work in progress:**
-
-   ```sh
-   npm run cucumber -- --tags "not @wip"
    ```
 
 ## Project Structure
