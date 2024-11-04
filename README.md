@@ -10,8 +10,8 @@ It hits 5 major Features:
 - Machine Learning
    - Using Tensor Flow
    - Image Classification
-- Perfomance Testing with [https://k6.io/](https://k6.io/)
-- UI Tesitng
+- Performance Testing with [https://k6.io/](https://k6.io/)
+- UI Testing
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
