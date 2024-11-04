@@ -1,5 +1,5 @@
-@api
-Feature: API Testing with separate request types
+@TestAPI
+Feature: Test API
   As an Engineer
   I want to be able to test API endpoints
   So I can validate the response data
