@@ -5,6 +5,15 @@ import { AxeResults, Result } from 'axe-core';
 import { createHtmlReport } from 'axe-html-reporter';
 import { writeFileSync } from 'fs';
 
+// Declare the axe type in the global window object
+declare global {
+  interface Window {
+    axe: {
+      run: () => Promise<AxeResults>;
+    };
+  }
+}
+
 // Function to inject the Axe accessibility testing library into the webpage
 async function injectAxe(page: Page) {
   await page.addScriptTag({
@@ -15,7 +24,7 @@ async function injectAxe(page: Page) {
 // Function to run the Axe accessibility check and return the results
 async function checka11y(page: Page): Promise<AxeResults> {
   return await page.evaluate(async () => {
-    return await (window as any).axe.run();
+    return await window.axe.run(); // Use the declared window.axe type
   });
 }
 

@@ -1,10 +1,10 @@
-import { setWorldConstructor, World } from '@cucumber/cucumber';
+import { setWorldConstructor, World, IWorldOptions } from '@cucumber/cucumber';
 import { Page } from 'playwright';
 
 export class CustomWorld extends World {
   page: Page | undefined;
 
-  constructor(options: any) { // Setting options type to any
+  constructor(options: IWorldOptions) { // Using IWorldOptions for the options type
     super(options);
     this.page = undefined;
   }

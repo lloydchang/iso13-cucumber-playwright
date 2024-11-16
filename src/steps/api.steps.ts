@@ -3,14 +3,19 @@ import { Given, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { sendPostRequest, sendGetRequest } from '../support/api/apiHelper';
 
-let response: any;
+type ApiResponse = {
+  data: Record<string, any>; // Define the structure of your API response
+  [key: string]: any; // Allow additional keys if needed
+};
+
+let response: ApiResponse;
 
 Given(
   'I send a POST request to {string} with the following data',
   async function (endpoint: string, dataTable) {
     const data = dataTable.rowsHash();
     try {
-      response = await sendPostRequest(endpoint, data);
+      response = await sendPostRequest(endpoint, data) as ApiResponse;
     } catch (error) {
       throw new Error(`Failed to send POST request to ${endpoint}: ${error}`);
     }
@@ -19,7 +24,7 @@ Given(
 
 Given('I send a GET request to {string}', async function (endpoint: string) {
   try {
-    response = await sendGetRequest(endpoint);
+    response = await sendGetRequest(endpoint) as ApiResponse;
   } catch (error) {
     throw new Error(`Failed to send GET request to ${endpoint}: ${error}`);
   }
