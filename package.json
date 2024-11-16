@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "David Tran",
-  "license": "ISC",
+  "license": "MIT",
   "description": "Cucumber Playwright Automation Framework",
   "scripts": {
     "gherkin-lint": "npx gherkin-lint",
