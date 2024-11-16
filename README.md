@@ -59,10 +59,47 @@ It hits 5 major Features:
 
 5. **Install k6 Globally: Install k6 globally on your system to use it as a CLI:**
 
-   ```sh
-   brew install k6  # macOS
-   sudo apt install k6  # Ubuntu Linux
-   choco install k6  # Windows, using Chocolatey
+   **Mac:**
+
+   https://brew.sh/
+
+   ```zsh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+   https://grafana.com/docs/k6/latest/set-up/install-k6/
+
+   ```zsh
+   brew install k6
+   ```
+
+   **Debian/Ubuntu Linux:**
+
+   https://grafana.com/docs/k6/latest/set-up/install-k6/
+
+   ```bash
+   sudo gpg -k
+   sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+   echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+   sudo apt-get update
+   ```
+
+   ```bash
+   sudo apt-get install k6
+   ```
+
+   **Windows:**
+
+   https://chocolatey.org/install
+
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   ```
+
+   https://grafana.com/docs/k6/latest/set-up/install-k6/
+
+   ```powershell
+   choco install k6
    ```
 
 ## Running Features
