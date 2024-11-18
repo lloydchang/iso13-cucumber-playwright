@@ -8,7 +8,7 @@
   "scripts": {
     "gherkin-lint": "npx gherkin-lint",
     "lint": "eslint 'src/**/*.ts'",
-    "prepReport": "rimraf reports traces && mkdir reports",
+    "prepReport": "rimraf reports traces && mkdir -p reports/screenshots reports/accessibility",
     "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
     "build": "npx tsc",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -18,6 +18,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@cucumber/cucumber": "11.0.1",
     "@cucumber/html-formatter": "21.7.0",
     "@cucumber/messages": "27.0.0",
