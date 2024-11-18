@@ -28,6 +28,11 @@ async function checka11y(page: Page): Promise<AxeResults> {
   });
 }
 
+
+Given('I go to the following {string}', async function (url: string) {
+  await this.page.goto(url);
+});
+
 // Given step: Navigate to a specific accessible website
 Given('I go to a site that is accessible', async function () {
   await this.page.goto('https://www.a11yproject.com/');

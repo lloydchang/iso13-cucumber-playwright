@@ -8,12 +8,9 @@ Feature: Validate Accessibility
   #a11y reports are generated in /artifacts/acceessibilityReport.html
 
   Scenario: Validate a11y for a site
-    Given I go to a site that is accessible
+    Given I go to the following "https://www.a11yproject.com/"
     When I run the a11y check
     Then I should not see violations
-
-  @wip
-  Scenario: Validate A11y on a specific page
 
   @wip
   Scenario: Validate A11y on a specific element
@@ -22,4 +19,4 @@ Feature: Validate Accessibility
   Scenario: Validate A11y on a specific element with a specific rule
 
   @wip
-  Scenario: Validate  constact ratios
+  Scenario: Validate contrast ratios
