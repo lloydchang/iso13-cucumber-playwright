@@ -9,7 +9,7 @@ class PageFixture {
   // Method to initialize the browser, context, and page
   async initialize() {
     if (!this.browser) {
-      this.browser = await chromium.launch({ headless: true });
+      this.browser = await chromium.launch({ headless: false });
     }
 
     if (!this.context) {
