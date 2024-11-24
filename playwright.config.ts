@@ -1,5 +1,5 @@
 // playwright.config.ts
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import { environments } from './src/support/environments';
 
 // Determine the baseURL based on the environment variable ENV, default to 'qa' if not provided
@@ -20,4 +20,21 @@ export default defineConfig({
     navigationTimeout: 15000, // Set navigation timeout to 15 seconds
     actionTimeout: 10000, // Set action timeout to 10 seconds
   },
+  reporter: 'html', // Use the built-in HTML reporter
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
+  workers: process.env.CI ? 1 : 4, // Adjust the number of workers based on your system
 });
+
