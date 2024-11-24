@@ -9,10 +9,16 @@
     "gherkin-lint": "npx gherkin-lint",
     "lint": "eslint 'src/**/*.ts'",
     "prepReport": "rimraf reports traces && mkdir -p reports/screenshots reports/accessibility",
-    "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/step-steps/**/*.ts'",
+    "cucumber": "cross-env ENV=qa cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
+    "cucumber:dev": "cross-env ENV=dev cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
+    "cucumber:staging": "cross-env ENV=staging cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
     "build": "npx tsc",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "codegen": "playwright codegen"
+    "codegen": "playwright codegen",
+    "test:qa": "cross-env ENV=qa npx playwright test",
+    "test:dev": "cross-env ENV=dev npx playwright test",
+    "test:staging": "cross-env ENV=staging npx playwright test",
+    "test": "cross-env ENV=qa npx playwright test"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -48,7 +54,7 @@
     "axe-html-reporter": "2.2.11",
     "axe-playwright": "2.0.3",
     "axios": "1.7.7",
-    "cross-env": "7.0.3",
+    "cross-env": "^7.0.3",
     "dotenv": "16.4.5",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "9.1.0",
