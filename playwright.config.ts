@@ -3,7 +3,9 @@ import { defineConfig } from '@playwright/test';
 import { environments } from './src/support/environments';
 
 // Determine the baseURL based on the environment variable ENV, default to 'qa' if not provided
+
 const envKey = process.env.ENV as keyof typeof environments ?? 'qa';
+
 const baseURL = environments[envKey];
 
 export default defineConfig({
