@@ -4,3 +4,10 @@ export const environments: Record<'qa' | 'dev' | 'staging', string> = {
   dev: 'https://dev.in-house.com/',
   staging: 'https://staging.in-house.com/',
 };
+
+export const getBaseURL = (): string => {
+  const envKey = process.env.ENV as keyof typeof environments ?? 'qa';
+  const baseURL = environments[envKey];
+  if (!baseURL) throw new Error('Invalid environment value');
+  return baseURL;
+};
