@@ -1,5 +1,5 @@
-@env
-Feature: Env
+@EnvTest
+Feature: Env Test
 
-Scenario: test
-Given I navigate to homepage
+    Scenario: Validate environment switching
+        Given I navigate to homepage
