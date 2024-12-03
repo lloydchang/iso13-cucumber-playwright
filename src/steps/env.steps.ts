@@ -1,9 +1,14 @@
 import { Given } from '@cucumber/cucumber';
 import { CustomWorld } from '../support/world';
-import { environments } from '../support/environments';
+import { getBaseURL } from '../support/environments';
 
-Given('I navigate to homepage', async function (this: CustomWorld) {
-  const baseURL = environments[envKey];
+Given('I navigate to the home page', async function (this: CustomWorld) {
+  const baseURL = getBaseURL(); // Get the base URL from environments
+
+  if (!baseURL) {
+    throw new Error('Base URL is undefined');
+  }
+
   await this.page?.goto(baseURL); // Navigate to the base URL
-  await this.page?.waitForTimeout(5000);
+  await this.page?.waitForTimeout(5000); // Optional wait for demo purposes
 });

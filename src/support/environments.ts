@@ -6,7 +6,7 @@ export const environments: Record<'qa' | 'dev' | 'staging', string> = {
 };
 
 export const getBaseURL = (): string => {
-  const envKey = process.env.ENV as keyof typeof environments ?? 'qa';
+  const envKey = (process.env.ENV as keyof typeof environments) ?? 'qa'; // Fallback to 'qa' if undefined
   const baseURL = environments[envKey];
   if (!baseURL) throw new Error('Invalid environment value');
   return baseURL;
