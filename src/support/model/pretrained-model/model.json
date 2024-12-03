@@ -2,7 +2,7 @@
     "modelTopology": {
         "class_name": "Sequential",
         "config": {
-            "name": "sequential_1",
+            "name": "sequential_3",
             "layers": [
                 {
                     "class_name": "Dense",
@@ -28,7 +28,7 @@
                         "activity_regularizer": null,
                         "kernel_constraint": null,
                         "bias_constraint": null,
-                        "name": "dense_Dense1",
+                        "name": "dense_Dense7",
                         "trainable": true,
                         "batch_input_shape": [
                             null,
@@ -49,7 +49,7 @@
             ],
             "weights": [
                 {
-                    "name": "dense_Dense1/kernel",
+                    "name": "dense_Dense7/kernel",
                     "shape": [
                         1,
                         1
@@ -57,7 +57,7 @@
                     "dtype": "float32"
                 },
                 {
-                    "name": "dense_Dense1/bias",
+                    "name": "dense_Dense7/bias",
                     "shape": [
                         1
                     ],
