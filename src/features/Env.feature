@@ -1,5 +1,5 @@
 @env
 Feature: Env
 
-Scenario: test
-Given I navigate to homepage
+    Scenario: test
+        Given I navigate to the home page

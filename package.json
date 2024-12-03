@@ -10,6 +10,7 @@
     "lint": "eslint 'src/**/*.ts'",
     "prepReport": "rimraf reports traces && mkdir -p reports/screenshots reports/accessibility",
     "cucumber": "cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
+    "cucumber:qa": "cross-env ENV=qa cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
     "cucumber:dev": "cross-env ENV=dev cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
     "cucumber:staging": "cross-env ENV=staging cucumber-js --config cucumber.mjs --format cucumber-console-formatter --require 'src/steps/**/*.ts'",
     "build": "npx tsc",
