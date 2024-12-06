@@ -7,5 +7,4 @@ Given('I navigate to homepage', async function (this: CustomWorld) {
   const baseURL = environments[envKey];
   await this.page?.goto(baseURL);
   await this.page?.waitForTimeout(5000);
-
 });
